@@ -1,10 +1,11 @@
 #!/bin/bash
 rm -rf ssl_out
+mkdir ssl_out
 
 docker run -it --rm --name certbot \
   -v "`echo ~/.aws`:/root/.aws" \
   -v "`pwd`/ssl_out:/etc/letsencrypt/archive/" \
-  --env AWS_PROFILE=$AWS_PROFILE \
+  --env AWS_PROFILE=${AWS_PROFILE-default} \
   certbot/dns-route53 certonly \
   -n --email $EMAIL \
   --agree-tos --preferred-challenges dns \
