@@ -8,7 +8,7 @@ docker run -it --rm --name certbot \
   -v "`echo ~/.aws`:/root/.aws" \
   -v "`pwd`/$DATE_STRING:/etc/letsencrypt/archive/" \
   --env AWS_PROFILE=${AWS_PROFILE-default} \
-  certbot/dns-route53 certonly \
+  certbot/dns-route53:v0.28.0 certonly \
   -n --email $EMAIL \
   --agree-tos --preferred-challenges dns \
   --server https://acme-v02.api.letsencrypt.org/directory \
