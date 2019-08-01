@@ -4,7 +4,7 @@ DATE_STRING=`date +"%Y-%m-%d_%H-%M-%S"`
 
 mkdir `echo $DATE_STRING`
 
-docker run -it --rm --name certbot \
+docker run --rm --name certbot \
   -v "`echo ~/.aws`:/root/.aws" \
   -v "`pwd`/$DATE_STRING:/etc/letsencrypt/archive/" \
   --env AWS_PROFILE=${AWS_PROFILE-default} \
